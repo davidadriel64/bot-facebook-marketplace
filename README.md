@@ -11,6 +11,7 @@ En la carpeta imagenes se colocan las imagenes con el titulo a usar en cada publ
 
 ```bash
 brew install python
+```
 
 :: Crea un entorno virtual en la ruta especificada
 
@@ -24,7 +25,7 @@ python3 -m venv path/to/venv
 source path/to/venv/bin/activate
 ```
 
-:: Instala la biblioteca, que se utiliza para manipular audio y demas
+:: Instala las bibliotecas
 
 ```bash
 pip3 install -r requirements.txt
@@ -61,7 +62,7 @@ python -m venv path\to\venv
 path\to\venv\Scripts\activate
 ```
 
-:: Instala la biblioteca
+:: Instala las bibliotecas
 
 ```bash
 pip install -r requirements.txt
