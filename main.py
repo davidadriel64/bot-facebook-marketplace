@@ -522,7 +522,6 @@ def mark_as_sold(driver):
 # Main Control Flow
 if __name__ == "__main__":
 
-        print("Cargando configuración.")
         config = read_settings()
         data = read_excel_tabs(config["tabs_file"])
         profiles = read_profiles(config["profiles_file"])
@@ -530,53 +529,59 @@ if __name__ == "__main__":
             print("\n\nInsert Profiles in profiles.xlsx file to Run.\n")
             time.sleep(20)
             quit()
-        print("\n")
-        print("¿Que opción desea ejecutar?")
-        print("1. Publicar Todas los articulos")
-        print("2. Marcar como agotados/vendidos Todos los articulos")
-        data = input("Seleccione un número: ")
-        print("\n")
+        while True:
+            print("¿Qué opción desea ejecutar?")
+            print("1. Publicar todos los artículos")
+            print("2. Marcar como agotados/vendidos todos los artículos")
+            inputData = input("Seleccione un número: ")
 
-        if data == "1":
-            if not images_exist(data):
-                time.sleep(20)
-                quit()
-            drivers = []
-            for profile in profiles:
-                print(
-                    "\nUsing Profile ", profile["Email"], " ->  Running for", len(data), "tabs."
-                )
-                driver = open_browser()
-                actions = ActionChains(driver)
-                driver.get("https://www.facebook.com/")
-                time.sleep(5)
-                login_facebook(driver, actions, profile)
-                time.sleep(20)
-                open_tabs(driver, len(data), 1)
-                time.sleep(3)
-                # Fill data
-                for i in range(0, len(data)):
-                    print("Filling Data for Tab#", str(i + 1))
-                    driver.switch_to.window(driver.window_handles[i])
-                    time.sleep(0.5)
-                    fill_data(driver, actions, data[i])
-                submit_quickly(driver)
-                time.sleep(25)
-                driver.quit()
+            if inputData in ["1", "2"]:
+                print(f"\nHas seleccionado la opción {inputData}.\n")
 
-        elif data == "2":
-             for profile in profiles:
-                print(
-                    "\nUsing Profile ", profile["Email"], " ->  Running for", len(data), "tabs."
-                )
-                driver = open_browser()
-                actions = ActionChains(driver)
-                driver.get("https://www.facebook.com/")
-                time.sleep(5)
-                login_facebook(driver, actions, profile)
-                time.sleep(20)
-                open_tabs(driver, 1, 2)
-                time.sleep(0.5)
-                mark_as_sold(driver)
-                time.sleep(25)
-                driver.quit()
+                if inputData == "1":
+                    if not images_exist(data):
+                        time.sleep(20)
+                        quit()
+                    drivers = []
+                    for profile in profiles:
+                        print(
+                            "\nUsing Profile ", profile["Email"], " ->  Running for", len(data), "tabs."
+                        )
+                        driver = open_browser()
+                        actions = ActionChains(driver)
+                        driver.get("https://www.facebook.com/")
+                        time.sleep(5)
+                        login_facebook(driver, actions, profile)
+                        time.sleep(20)
+                        open_tabs(driver, len(data), 1)
+                        time.sleep(3)
+                        # Fill data
+                        for i in range(0, len(data)):
+                            print("Filling Data for Tab#", str(i + 1))
+                            driver.switch_to.window(driver.window_handles[i])
+                            time.sleep(0.5)
+                            fill_data(driver, actions, data[i])
+                        submit_quickly(driver)
+                        time.sleep(25)
+                        driver.quit()
+
+                elif inputData == "2":
+                    for profile in profiles:
+                        print(
+                            "\nUsing Profile ", profile["Email"], " ->  Running for", len(data), "tabs."
+                        )
+                        driver = open_browser()
+                        actions = ActionChains(driver)
+                        driver.get("https://www.facebook.com/")
+                        time.sleep(5)
+                        login_facebook(driver, actions, profile)
+                        time.sleep(20)
+                        open_tabs(driver, 1, 2)
+                        time.sleep(0.5)
+                        mark_as_sold(driver)
+                        time.sleep(25)
+                        driver.quit()
+               
+            else:
+                print("\nOpción inválida. Por favor, ingrese 1 o 2.\n")
+        

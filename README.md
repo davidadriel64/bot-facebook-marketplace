@@ -3,7 +3,7 @@
 En el archivo profiles.xlsx deben ingresar los datos de su cuenta para que inicie sesion en su cuenta.
 En el archivo tabs.xlsx deben colocar los datos  a publicar (en español) al igual que las categorias y todo lo demas (tal cual como esta en facebook) si no, este podria no encontrar el elemento y generar error.
 
-En la carpeta imagenes se colocan las imagenes con el titulo a usar en cada publicacion, este titulo va en el excel junto con su extencion (jpg o la que sea y admita facebook)
+En la carpeta imagenes se colocan las imagenes con el titulo a usar en cada publicacion, este titulo exacto de la imagen
 
 # Mac os:
 
@@ -13,7 +13,7 @@ En la carpeta imagenes se colocan las imagenes con el titulo a usar en cada publ
 brew install python
 ```
 
-:: Crea un entorno virtual en la ruta especificada
+:: Crea un entorno virtual en la ruta especificada (fijarse en consola que la direccion sea la misma donde se encuentra el archivo main.py)
 
 ```bash
 python3 -m venv path/to/venv
@@ -25,7 +25,7 @@ python3 -m venv path/to/venv
 source path/to/venv/bin/activate
 ```
 
-:: Instala las bibliotecas
+:: Instala la biblioteca, que se utiliza para manipular audio y demas
 
 ```bash
 pip3 install -r requirements.txt
@@ -34,7 +34,7 @@ pip3 install -r requirements.txt
 :: Ejecuta el script con
 
 ```bash
-python3 app.py
+python3 main.py
 ```
 
 # Windows:
@@ -50,7 +50,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 choco install python
 ```
 
-:: Crea un entorno virtual en la ruta especificada
+:: Crea un entorno virtual en la ruta especificada (fijarse en consola que la direccion sea la misma donde se encuentra el archivo main.py)
 
 ```bash
 python -m venv path\to\venv
@@ -62,7 +62,7 @@ python -m venv path\to\venv
 path\to\venv\Scripts\activate
 ```
 
-:: Instala las bibliotecas
+:: Instala la biblioteca
 
 ```bash
 pip install -r requirements.txt
@@ -71,5 +71,5 @@ pip install -r requirements.txt
 :: Ejecuta el script con
 
 ```bash
-python app.py
+python main.py
 ```
